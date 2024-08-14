@@ -3,215 +3,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>软件下载界面</title>
+    <title>专业司机培训学校</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #f7f7f7;
+            display: flex;
         }
-        .container {
-            max-width: 1200px;
-            margin: auto;
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            height: 100vh;
+            color: white;
+            padding: 20px;
+            transition: width 0.3s;
+        }
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+        .sidebar a:hover {
+            background-color: #555;
+        }
+        .sidebar .submenu {
+            display: none;
+            padding-left: 20px;
+        }
+        .sidebar .submenu a {
+            padding: 5px;
+        }
+        .main-content {
+            flex-grow: 1;
             padding: 20px;
         }
-        .software-item {
-            background: #fff;
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+        .card {
+            background-color: #fff;
             border: 1px solid #ddd;
-            margin-bottom: 20px;
+            border-radius: 10px;
             padding: 20px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
         }
-        .software-image {
-            max-width: 100%;
-            height: auto;
-            display: block;
-            margin-bottom: 20px;
+        .card:hover {
+            transform: translateY(-5px);
         }
-        .software-title {
-            font-size: 24px;
+        .card-category {
+            text-transform: uppercase;
+            color: #666;
+            font-size: 0.8em;
+            margin-bottom: 10px;
+        }
+        .card-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .card-content {
+            font-size: 1em;
             color: #333;
-            margin-bottom: 10px;
         }
-        .software-description {
-            margin-bottom: 20px;
-        }
-        .software-rating {
-            color: gold;
-            margin-bottom: 10px;
-        }
-        .download-button {
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: row; /* 保持侧边栏在左侧 */
+            }
+            .sidebar {
+                width: 90px; /* 保持固定宽度 */
+                height: auto;
+            }
+            .main-content {
+                flex-grow: 1;
+                padding: 20px;
+            }
+            .card-container {
+                grid-template-columns: 1fr; /* 卡片堆叠 */
+            }
+            .download-btn {
             display: inline-block;
+            padding: 5px 10px;
             background-color: #5cb85c;
             color: white;
-            padding: 10px 20px;
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
+            
         }
-        .download-button:hover {
+        .download-btn:hover {
             background-color: #4cae4c;
         }
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .software-item {
-                padding: 10px;
-            }
-            .software-title {
-                font-size: 20px;
-            }
-            .download-button {
-                padding: 8px 16px;
-            }
-        }
+    }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- 软件下载卡片 -->
-        <div class="software-item">
-            <h2 class="software-title">Telegram</h2>
-            <p class="software-description">是一款跨平台的即时通讯应用程序</p>
-
-            <a href="https://share.feijipan.com/s/OzB0GLqm" class="download-button">立即下载</a> 
+    <div class="sidebar">
+                <h2></h2>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu0')">首页</a>
+        <div id="submenu0" class="submenu">
+            <a href="https://abcd136.github.io/b/">跳转</a>
+            </div>
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu1')">通知</a>
+        <div id="submenu1" class="submenu">
+            <a href="https://abcd136.github.io/b1/">公告</a>
         </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">twitter</h2>
-            <p class="software-description">是一个社交媒体平台</p>
-
-            <a href="https://share.feijipan.com/s/NFB0HXPu" class="download-button">立即下载</a> 
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu2')">广播</a>
+        <div id="submenu2" class="submenu">
+            <a href="https://abcd136.github.io/b41/">广播站</a>
         </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">Youtude</h2>
-            <p class="software-description">是一个视频分享平台</p>
-
-            <a href="https://share.feijipan.com/s/sVAhgV4h" class="download-button">立即下载</a> 
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu3')">安卓</a>
+        <div id="submenu3" class="submenu">
+            <a href="#">软件</a>
+            <a href="#">梯子</a>
+            <a href="#">影视</a>
+            <a href="#">小说</a>
+            <a href="#">AI</a>
+            <a href="#">搜图</a>
+            <a href="#">私密</a>
+            <a href="#">网盘</a>
+            <a href="#">手游</a>
+            <a href="#">动漫</a>
+            <a href="#">工具</a>
         </div>
-        
-        <div class="software-item">
-            <h2 class="software-title">谷歌浏览器</h2>
-            <p class="software-description">是由Google公司开发的一款网络浏览器</p>
-
-            <a href="https://share.feijipan.com/s/TgAhfMCV" class="download-button">立即下载</a> 
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu4')">电脑</a>
+        <div id="submenu4" class="submenu">
+            <a href="#">软件</a>
+            <a href="#">梯子</a>
+            <a href="#">游戏网站</a>
+            <a href="#">游戏加速</a>
+            <a href="#">游戏</a>
+            <a href="#">系统</a>
         </div>
-            
-        <div class="software-item">
-            <h2 class="software-title">谷歌商店</h2>
-            <p class="software-description">是Android系统自带的官方市场</p>
-
-            <a href="https://share.feijipan.com/s/IVAhf8aS" class="download-button">立即下载</a>
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu5')">吃瓜</a>
+        <div id="submenu5" class="submenu">
+            <a href="#">网络</a>
         </div>
-            
-        <div class="software-item">
-            <h2 class="software-title">谷歌安装器</h2>
-            <p class="software-description">是一款支持谷歌市场和谷歌服务的软件</p>
-
-            <a href="https://share.feijipan.com/s/BAAhgCtX" class="download-button">立即下载</a>
+        <p><a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu6')">车牌</a>
+        <div id="submenu6" class="submenu">
+            <a href="#">网络</a>
+            <a href="#">车号</a>
+            <a href="#">里番</a>
         </div>
-            
-        <div class="software-item">
-            <h2 class="software-title">Bing</h2>
-            <p class="software-description">是一款微软公司推出的用以取代Live Search的搜索引擎</p>
-
-            <a href="https://share.feijipan.com/s/qjAhgv55" class="download-button">立即下载</a>
+        <a href="#" class="menu-toggle" onclick="toggleMenu(event, 'submenu7')">旧网站</a>
+        <div id="submenu7" class="submenu">
+            <a href="https://abcd136.github.io/abcd/">跳转</a>
         </div>
-        
-            <div class="software-item">
-            <h2 class="software-title">Wikipedia</h2>
-            <p class="software-description">是来自世界各地的人民用不同的语言共同创建的百科全书</p>
-
-            <a href="https://share.feijipan.com/s/alAhgjni" class="download-button">立即下载</a>
-        </div>
-        
-                    <div class="software-item">
-            <h2 class="software-title">VLC</h2>
-            <p class="software-description">是VideoLAN计划的多媒体播放器</p>
-
-            <a href="https://share.feijipan.com/s/VKAhh42H" class="download-button">立即下载</a>
-        </div>
-        
-            <div class="software-item">
-            <h2 class="software-title">Discord</h2>
-            <p class="software-description">是一款适用于游戏玩家一体化语音和文字聊天软件</p>
-
-            <a href="https://share.feijipan.com/s/kEAhh9EH" class="download-button">立即下载</a>
-        </div>
-        
-            <div class="software-item">
-            <h2 class="software-title">Facebook</h2>
-            <p class="software-description">美国的社群网络服务及社会化媒体网站</p>
-
-            <a href="https://share.feijipan.com/s/4xAhhsYy" class="download-button">立即下载</a>
-        </div>
-        
-                    <div class="software-item">
-            <h2 class="software-title">pixiv</h2>
-            <p class="software-description">是一款面向创作者和艺术爱好者的绘画社区软件</p>
-
-            <a href="https://share.feijipan.com/s/LoAhiTrZ" class="download-button">立即下载</a>
-        </div>
-        
-            <div class="software-item">
-            <h2 class="software-title">ZArchiver</h2>
-            <p class="software-description">是一款强大的压缩和解压缩软件</p>
-
-            <a href="https://share.feijipan.com/s/LuAhiMrI" class="download-button">立即下载</a>
-        </div>
-        
-                    <div class="software-item">
-            <h2 class="software-title">GitHub</h2>
-            <p class="software-description">是一个面向开源及私有软件项目的托管平台</p>
-
-            <a href="https://share.feijipan.com/s/HyAhiYGe" class="download-button">立即下载</a>
-        </div>
-        
-                    <div class="software-item">
-            <h2 class="software-title">NICONICO</h2>
-            <p class="software-description">是NIWANGO公司所提供的线上影片分享网站</p>
-
-            <a href="https://share.feijipan.com/s/wxAhiwyG" class="download-button">立即下载</a>
-        </div>
-        
-                    <div class="software-item">
-            <h2 class="software-title">steam</h2>
-            <p class="software-description">是一个整合游戏下载平台</p>
-
-            <a href="https://share.feijipan.com/s/HLAhisuX" class="download-button">立即下载</a>
-        </div>
-        
-                    <div class="software-item">
-            <h2 class="software-title">via</h2>
-            <p class="software-description">是一款非常小巧简洁的手机端浏览器应用</p>
-
-            <a href="https://share.feijipan.com/s/mcAhiIML" class="download-button">立即下载</a>
-        </div>
-        
-                    <div class="software-item">
-            <h2 class="software-title">opera</h2>
-            <p class="software-description">是来自挪威的一个极为出色的网络浏览器</p>
-
-            <a href="https://share.feijipan.com/s/CSAhiKLc" class="download-button">立即下载</a>
-        </div>
-        
-                    <div class="software-item">
-            <h2 class="software-title">哔哩哔哩国际版</h2>
-            <p class="software-description">是一款面向全球小伙伴开发的b站客户端软件</p>
-
-            <a href="https://share.feijipan.com/s/QVAhjFSl" class="download-button">立即下载</a>
-        </div>
-        
-                    <div class="software-item">
-            <h2 class="software-title">快手国际版</h2>
-            <p class="software-description"></p>
-
-            <a href="https://share.feijipan.com/s/XvAjjr3N" class="download-button">立即下载</a>
-        </div>
-            
-        </div>
-        <!-- 更多软件卡片可以按照上面的格式添加 -->
     </div>
+    <div class="main-content">
+        <div class="header">
+            <h1></h1>
+        </div>
+
+        <div class="card-container">
+            
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">Telegram</div>
+        <div class="card-content">
+        <div class="download-section">
+            一款跨平台的即时通讯应用程序
+        <p><a href="https://share.feijipan.com/s/OzB0GLqm" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">twitter</div>
+        <div class="card-content">
+        <div class="download-section">
+            一个社交媒体平台
+        <p><a href="https://share.feijipan.com/s/NFB0HXPu" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">Youtude</div>
+        <div class="card-content">
+        <div class="download-section">
+            一个全球视频分享平台
+        <p><a href="https://share.feijipan.com/s/sVAhgV4h" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">谷歌浏览器</div>
+        <div class="card-content">
+        <div class="download-section">
+            由Google公司开发的一款网络浏览器
+        <p><a href="https://share.feijipan.com/s/TgAhfMCV" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">谷歌商店</div>
+        <div class="card-content">
+        <div class="download-section">
+            Android系统自带的官方市场
+        <p><a href="https://share.feijipan.com/s/IVAhf8aS" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+    <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">谷歌安装器</div>
+        <div class="card-content">
+<div class="download-section">
+            一款支持谷歌市场和谷歌服务的软件
+        <p><a href="https://share.feijipan.com/s/BAAhgCtX" class="download-btn">下载</a>
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">Bing</div>
+        <div class="card-content">
+        <div class="download-section">
+            一款微软公司推出的用以取代Live Search的搜索引擎
+        <p><a href="https://share.feijipan.com/s/qjAhgv55" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">Wikipedia</div>
+        <div class="card-content">
+        <div class="download-section">
+            来自世界各地的人民用不同的语言共同创建的百科全书
+        <p><a href="https://share.feijipan.com/s/alAhgjni" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">VLC</div>
+        <div class="card-content">
+        <div class="download-section">
+            VideoLAN计划的多媒体播放器
+        <p><a href="https://share.feijipan.com/s/VKAhh42H" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">Discord</div>
+        <div class="card-content">
+        <div class="download-section">
+            一款适用于游戏玩家一体化语音和文字聊天软件
+        <p><a href="https://share.feijipan.com/s/kEAhh9EH" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">Facebook</div>
+        <div class="card-content">
+        <div class="download-section">
+            美国的社群网络服务及社会化媒体网站
+        <p><a href="https://share.feijipan.com/s/4xAhhsYy" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">pixiv</div>
+        <div class="card-content">
+        <div class="download-section">
+            一款面向创作者和艺术爱好者的绘画社区软件
+        <p><a href="https://share.feijipan.com/s/LoAhiTrZ" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">ZArchiver</div>
+        <div class="card-content">
+        <div class="download-section">
+            一款强大的压缩和解压缩软件
+        <p><a href="https://share.feijipan.com/s/LuAhiMrI" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">GitHub</div>
+        <div class="card-content">
+        <div class="download-section">
+            一个面向开源及私有软件项目的托管平台
+        <p><a href="https://share.feijipan.com/s/HyAhiYGe" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">NICONICO</div>
+        <div class="card-content">
+        <div class="download-section">
+            NIWANGO公司所提供的线上影片分享网站
+        <p><a href="https://share.feijipan.com/s/wxAhiwyG" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">steam</div>
+        <div class="card-content">
+        <div class="download-section">
+            一个整合游戏下载平台
+        <p><a href="https://share.feijipan.com/s/HLAhisuX" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">via</div>
+        <div class="card-content">
+        <div class="download-section">
+            一款非常小巧简洁的手机端浏览器应用
+        <p><a href="https://share.feijipan.com/s/mcAhiIML" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">opera</div>
+        <div class="card-content">
+        <div class="download-section">
+            来自挪威的一个极为出色的网络浏览器
+        <p><a href="https://share.feijipan.com/s/CSAhiKLc" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">哔哩哔哩国际版</div>
+        <div class="card-content">
+        <div class="download-section">
+            一款面向全球小伙伴开发的b站客户端软件
+        <p><a href="https://share.feijipan.com/s/QVAhjFSl" class="download-btn">下载</a>
+        
+</div>
+            </div>
+    </div>
+        <div class="card">
+        <div class="card-category"></div>
+        <div class="card-title">快手国际版</div>
+        <div class="card-content">
+        <div class="download-section">
+            
+        <p><a href="https://share.feijipan.com/s/XvAjjr3N" class="download-btn">下载</a>
+        
+</div>
+            </div>
+        </div>
+
+    <script>
+        function toggleMenu(event, submenuId) {
+            event.preventDefault(); // 阻止链接的默认行为
+            var submenu = document.getElementById(submenuId);
+            if (submenu.style.display === 'block') {
+                submenu.style.display = 'none';
+            } else {
+                submenu.style.display = 'block';
+            }
+        }
+        // ... JavaScript代码保持不变 ...
+    </script>
 </body>
 </html>
